@@ -1,0 +1,10 @@
+This job can be monitored from: https://grafana.c3se.chalmers.se/d/gpu-job/gpu-job?var-jobid=2771997&from=1726229532000
+2024-09-13 14:12:14.616312: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-09-13 14:12:14.843305: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-13 14:12:14.843341: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-13 14:12:14.881879: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+Traceback (most recent call last):
+  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/CNN-predict_1.py", line 40, in <module>
+    print(tf.keras.__version__)
+          ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tensorflow.keras' has no attribute '__version__'

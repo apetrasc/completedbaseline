@@ -1,0 +1,10 @@
+# ml models
+*.h5
+*.pt
+*.ckpt
+*.hdf5
+*.npz
+*.tfrecords
+# other large files
+*.zip
+*.tar.gz
