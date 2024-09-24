@@ -1,8 +1,12 @@
 import tensorflow as tf
 import config_deep as config
 import os
+import math
 prb_def = os.environ.get('MODEL_CNN', None)
 app = config.NN_WallRecon
+init_lr = app.INIT_LR
+lr_drop = app.LR_DROP
+lr_epdrop = app.LR_EPDROP
 @tf.function
 def periodic_padding(tensor, padding):
     """
@@ -103,3 +107,15 @@ def parser(rec, pad):
         else:
             output3 = tf.reshape(parsed_rec['comp_out_raw3'], (1, nz, nx))
             return inputs, (output1, output2, output3)
+        
+def step_decay(epoch):
+   epochs_drop = lr_epdrop
+   initial_lrate = init_lr#/5
+   drop = lr_drop
+   lrate = initial_lrate * math.pow(drop,
+           math.floor((epoch)/epochs_drop))
+   return lrate
+
+# Final ReLu function for fluctuations
+def thres_relu(x):
+   return tf.keras.activations.relu(x, threshold=app.RELU_THRESHOLD)

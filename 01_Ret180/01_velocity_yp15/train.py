@@ -5,7 +5,6 @@ Created on Mon Nov 1 12:14:06 2024
 
 @author: sadanori
 """
-
 import os
 # import scipy.io as sio
 import numpy as np
@@ -20,7 +19,8 @@ import tensorflow.keras.backend as K
 from tensorflow.keras.utils import get_custom_objects
 from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, \
                                        ModelCheckpoint, LearningRateScheduler
-from src.utils import periodic_padding,periodic_padding_z,parser
+from src.utils import periodic_padding,periodic_padding_z,parser,thres_relu,step_decay
+from src.tf_utils import SubTensorBoard
 os.environ["MODEL_CNN"] = "NN_WallRecon";
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE";
 #%% Configuration import
@@ -33,6 +33,10 @@ if  prb_def == 'NN_WallRecon':
     print('Newtonian Wall-Recon is used')
 else:
     raise ValueError('"MODEL_CNN" enviroment variable must be defined as "NN_WallRecon". Otherwise, use different train script.')
+# Learning rate config
+init_lr = app.INIT_LR
+lr_drop = app.LR_DROP
+lr_epdrop = app.LR_EPDROP
 ds_path_train = app.DS_PATH_TRAIN
 ds_path_validation = app.DS_PATH_VALIDATION
 # Average profiles folder
@@ -90,33 +94,6 @@ if distributed_training:
     print('WARNING: The provided batch size is used in each device of the distributed training')
     batch_size *= strategy.num_replicas_in_sync
 validation_split = app.VAL_SPLIT
-# Learning rate config
-init_lr = app.INIT_LR
-lr_drop = app.LR_DROP
-lr_epdrop = app.LR_EPDROP
-
-class SubTensorBoard(TensorBoard):
-    def __init__(self, *args, **kwargs):
-        super(SubTensorBoard, self).__init__(*args, **kwargs)
-
-    def lr_getter(self):
-        # Get vals
-        #decay = self.model.optimizer.decay
-        decay = self.model.optimizer.learning_rate
-        lr = self.model.optimizer.lr
-        iters = self.model.optimizer.iterations # only this should not be const
-        beta_1 = self.model.optimizer.beta_1
-        beta_2 = self.model.optimizer.beta_2
-        # calculate
-        lr = lr * (1. / (1. + decay * K.cast(iters, K.dtype(decay))))
-        t = K.cast(iters, K.floatx()) + 1
-        lr_t = lr * (K.sqrt(1. - K.pow(beta_2, t)) / (1. - K.pow(beta_1, t)))
-        return np.float32(K.eval(lr_t))
-
-    def on_epoch_end(self, episode, logs = {}):
-        logs.update({'learning_rate': self.lr_getter()})
-        super(SubTensorBoard, self).on_epoch_end(episode, logs)
-
 
 #%% Functions for the NN
 
@@ -354,18 +331,6 @@ def cnn_model():
     CNN_model = tf.keras.models.Model(inputs=input_data, outputs=outputs_model)
     return CNN_model, losses
 
-    
-def step_decay(epoch):
-   epochs_drop = lr_epdrop
-   initial_lrate = init_lr#/5
-   drop = lr_drop
-   lrate = initial_lrate * math.pow(drop,
-           math.floor((epoch)/epochs_drop))
-   return lrate
-
-# Final ReLu function for fluctuations
-def thres_relu(x):
-   return tf.keras.activations.relu(x, threshold=app.RELU_THRESHOLD)
 
 # Credit to Marcin Możejko for the Callback definition
 class TimeHistory(tf.keras.callbacks.Callback):
@@ -379,9 +344,6 @@ class TimeHistory(tf.keras.callbacks.Callback):
         self.times.append(time.time() - self.epoch_time_start)
         
 #%% Reading configuration
-
-
-
 
 if app.NET_MODEL == 1:
     pad = tf.constant(64)
@@ -532,7 +494,6 @@ checkpoint = ModelCheckpoint('.logs/'+NAME+'/model.ckpt.{epoch:04d}.hdf5', \
 lrate = LearningRateScheduler(step_decay)
 time_callback = TimeHistory()
 
-
 tfr_files_train_ds = tf.data.Dataset.list_files(tfr_files_train, seed=666)
 tfr_files_val_ds = tf.data.Dataset.list_files(tfr_files_validation, seed=686)
 tfr_files_train_ds = tfr_files_train_ds.interleave(lambda x : tf.data.TFRecordDataset(x).take(tf.gather(n_samples_train, (tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-1],0,3),tf.int32)-1)*n_files_train +  tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-2],4,3),tf.int32))), cycle_length=16,num_parallel_calls=tf.data.experimental.AUTOTUNE)
@@ -650,7 +611,6 @@ tf.keras.models.save_model(
 )
 
 # Saving history
-
 tLoss = train_history.history['loss']
 vLoss = train_history.history['val_loss']
 tTrain = time_callback.times
