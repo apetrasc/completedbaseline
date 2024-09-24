@@ -9,4 +9,4 @@
 #SBATCH -o sb_output.o
 module load TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1
 module load matplotlib/3.5.2-foss-2022a
-python3 NN_velocity_result.py > eval.txt
+python3 NN_velocity_result.py > tmp/eval.txt

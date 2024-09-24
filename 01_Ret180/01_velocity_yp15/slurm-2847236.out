@@ -22,3 +22,5 @@ WARNING: All log messages before absl::InitializeLog() is called are written to 
 I0000 00:00:1727185102.746160  189917 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
 /apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/keras/src/engine/training.py:3103: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.
   saving_api.save_model(
+/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/train.py:605: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.
+  tf.keras.models.save_model(

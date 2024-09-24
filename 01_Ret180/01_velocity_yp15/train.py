@@ -104,7 +104,7 @@ else:
     pad = tf.constant(0)
     raise ValueError('NET_MODEL = 1 is the only one implentated so far')
 #%% Functions for the NN
-
+'''
 def cnn_model():
     input_data = layers.Input(shape=input_shape, name='input_data')
     ini = 30
@@ -338,7 +338,7 @@ def cnn_model():
     
     CNN_model = tf.keras.models.Model(inputs=input_data, outputs=outputs_model)
     return CNN_model, losses
-      
+'''    
 
 tstamp = int(time.time())
 
