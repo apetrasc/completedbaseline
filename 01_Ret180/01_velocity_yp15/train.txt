@@ -318,6 +318,16 @@ ________________________________________________________________________________
 None
 Epoch 1/5
 
-Epoch 1: val_output_b1_loss improved from inf to 0.00794, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182245/model.ckpt.0001.hdf5
-1339/1339 - 561s - loss: 0.0106 - output_b1_loss: 0.0082 - output_b2_loss: 3.5737e-04 - output_b3_loss: 0.0020 - val_loss: 0.0143 - val_output_b1_loss: 0.0079 - val_output_b2_loss: 0.0041 - val_output_b3_loss: 0.0022 - learning_rate: 3.6736e-04 - lr: 0.0010 - 561s/epoch - 419ms/step
+Epoch 1: val_output_b1_loss improved from inf to 0.02346, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0001.hdf5
+1339/1339 - 556s - loss: 0.0088 - output_b1_loss: 0.0068 - output_b2_loss: 8.1286e-04 - output_b3_loss: 0.0012 - val_loss: 0.0374 - val_output_b1_loss: 0.0235 - val_output_b2_loss: 0.0067 - val_output_b3_loss: 0.0073 - learning_rate: 3.6736e-04 - lr: 0.0010 - 556s/epoch - 416ms/step
 Epoch 2/5
+
+Epoch 2: val_output_b1_loss improved from 0.02346 to 0.00476, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0002.hdf5
+1339/1339 - 473s - loss: 0.0052 - output_b1_loss: 0.0043 - output_b2_loss: 1.1443e-04 - output_b3_loss: 8.2836e-04 - val_loss: 0.0056 - val_output_b1_loss: 0.00
+Epoch 3: val_output_b1_loss did not improve from 0.00794
+1339/1339 - 473s - loss: 0.0040 - output_b1_loss: 0.0033 - output_b2_loss: 9.0286e-05 - output_b
+Epoch 3: val_output_b1_loss did not improve from 0.02644
+1339/1339 - 474s - loss: 0.0030 - output_b1_loss: 0.0026 - output_b2_loss: 7.3394e-05 - output_b3_loss: 4.0084e-04 - val_loss: 0.7212 - val_output_b1_loss: 0.2490 - val_output_b2_loss: 0.1505 - val_output_b3_loss: 0.3216 - learning_rate: 1.9752e-04 - lr: 0.0010 - 474s/epoch - 354ms/step
+Epoch 4/5
+.6978e-05 - output_b3_loss: 4.1709e-04 - val_loss: 0.0163 - val_output_b1_loss: 0.0157 - val_output_b2_loss: 6.7371e-05 - val_output_b3_loss: 4.5371e-04 - learning_rate: 1.5696e-04 - lr: 0.0010 - 473s/epoch - 353ms/step
+Epoch 5/5

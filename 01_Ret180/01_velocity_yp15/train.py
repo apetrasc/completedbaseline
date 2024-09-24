@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Nov 1 12:14:06 2021
+Created on Mon Nov 1 12:14:06 2024
 
-@author: ari
+@author: sadanori
 """
 
 import os
@@ -64,7 +64,6 @@ save_path = cur_path+'/.saved_models/'
 epoch_path = cur_path+'/.epoch_log/'
 if not os.path.exists(save_path):
     os.mkdir(save_path)
-    
 if not os.path.exists(epoch_path):
     os.mkdir(epoch_path)
 
@@ -368,8 +367,6 @@ def step_decay(epoch):
 def thres_relu(x):
    return tf.keras.activations.relu(x, threshold=app.RELU_THRESHOLD)
 
-#get_custom_objects().update({'thres_relu': layers.Activation(thres_relu)})
-
 # Credit to Marcin Możejko for the Callback definition
 class TimeHistory(tf.keras.callbacks.Callback):
     def on_train_begin(self, logs={}):
@@ -524,12 +521,6 @@ nz = nz_ + padding_in
 
 input_shape = (app.N_VARS_IN, nz, nx)
 
-        
-#elif norm_input == True and prb_def == 'OuterRecon': #GB
-#    avgs_in = tf.constant(np.array([avgs[i][ypos_Ret[str(train_yp)]] for i in range(0,app.N_VARS_IN)],dtype=np.float32))
-#    std_in = tf.constant(np.array([rms[i][ypos_Ret[str(train_yp)]] for i in range(0,app.N_VARS_IN)],dtype=np.float32))
-    
-
 # Callbacks
 tensorboard = SubTensorBoard(log_dir='.logs/{}'.format(NAME),
                           histogram_freq=app.TB_HIST_FREQ
@@ -542,87 +533,12 @@ lrate = LearningRateScheduler(step_decay)
 time_callback = TimeHistory()
 
 
-# tfr_files_input_train_ds = tf.data.Dataset.list_files(tfr_files_input_train, seed=666)
 tfr_files_train_ds = tf.data.Dataset.list_files(tfr_files_train, seed=666)
-
-# tfr_files_input_val_ds = tf.data.Dataset.list_files(tfr_files_input_valid, seed=686)
 tfr_files_val_ds = tf.data.Dataset.list_files(tfr_files_validation, seed=686)
-
-
-
 tfr_files_train_ds = tfr_files_train_ds.interleave(lambda x : tf.data.TFRecordDataset(x).take(tf.gather(n_samples_train, (tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-1],0,3),tf.int32)-1)*n_files_train +  tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-2],4,3),tf.int32))), cycle_length=16,num_parallel_calls=tf.data.experimental.AUTOTUNE)
-                       
-#tfr_files_train_ds = tfr_files_train_ds.interleave(lambda x : tf.data.TFRecordDataset(x).take(tf.cast(tf.gather(\
-#                       n_samples_train,tf.gather(n_samples_train,tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-2],4,3)\
-#                       ,tf.int64))+tf.strings.to_number(tf.strings.split(tf.strings.split(x,sep='_')[-1],sep='-')[0],tf.int64)-1)\
-#                       ,dtype=tf.int64)), cycle_length=16,num_parallel_calls=tf.data.experimental.AUTOTUNE)
-#
-#tfr_files_val_ds = tfr_files_val_ds.interleave(lambda x : tf.data.TFRecordDataset(x).take(tf.cast(tf.gather(\
-#                       n_samples_validation,tf.gather(n_samples_validation,tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-2],4,3)\
-#                       ,tf.int64))+tf.strings.to_number(tf.strings.split(tf.strings.split(x,sep='_')[-1],sep='-')[0],tf.int64)-1)\
-#                       ,dtype=tf.int64)), cycle_length=16,num_parallel_calls=tf.data.experimental.AUTOTUNE)
-
-
 tfr_files_val_ds = tfr_files_val_ds.interleave(lambda x : tf.data.TFRecordDataset(x).take(tf.gather(n_samples_validation, (tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-1],0,3),tf.int32)-1)*n_files_validation +  tf.strings.to_number(tf.strings.substr(tf.strings.split(x,sep='_')[-2],4,3),tf.int32))), cycle_length=16,num_parallel_calls=tf.data.experimental.AUTOTUNE) # Can I change the cycle length? GB
-
-#print(tfr_files_train_ds)
-#print(tfr_files_val_ds)
-#tfr_files_train_ds = tfr_files_train_ds.interleave(lambda x : tf.data.TFRecordDataset(x).take(samples_train_shared) \
-#    if tf.math.equal(x,shared_tfr_out) \
-#    else tf.data.TFRecordDataset(x).take(tf.gather(n_samples_loaded_per_tfr, tf.strings.to_number(tf.strings.split(tf.strings.split(x, sep='_')[-1],sep='-')[0], tf.int32)-1)),
-#    cycle_length=16,
-#    num_parallel_calls=tf.data.experimental.AUTOTUNE)
-#
-#tfr_files_val_ds = tfr_files_val_ds.interleave(lambda x : tf.data.TFRecordDataset(x).skip(samples_train_shared).take(n_samples_tfr_shared - samples_train_shared) \
-#    if tf.math.equal(x,shared_tfr_out) \
-#    else tf.data.TFRecordDataset(x).take(tf.gather(n_samples_loaded_per_tfr, tf.strings.to_number(tf.strings.split(tf.strings.split(x, sep='_')[-1],sep='-')[0], tf.int32)-1)),
-#    cycle_length=16,
-#    num_parallel_calls=tf.data.experimental.AUTOTUNE)
-
-# Parsing datasets ------------------------------------------------------------
-# parsed_ds_input_train = tfr_files_input_train_ds.map(parse_features)#, num_parallel_calls=tf.data.experimental.AUTOTUNE)    # Add number_of_parallel_calls?
-#dataset_train = tfr_files_train_ds.map(parser, num_parallel_calls=tf.data.experimental.AUTOTUNE)
 dataset_train = tfr_files_train_ds.map(lambda rec: parser(rec, pad), num_parallel_calls=tf.data.experimental.AUTOTUNE)
-# parsed_ds_input_val = tfr_files_input_val_ds.map(parse_features)#, num_parallel_calls=tf.data.experimental.AUTOTUNE)        # Add number_of_parallel_calls?
-#dataset_val = tfr_files_val_ds.map(parser, num_parallel_calls=tf.data.experimental.AUTOTUNE)
 dataset_val = tfr_files_val_ds.map(lambda rec: parser(rec, pad), num_parallel_calls=tf.data.experimental.AUTOTUNE)
-# Zipping input and output together -------------------------------------------
-# dataset_train = tf.data.Dataset.zip((parsed_ds_input_train, parsed_ds_output_train))
-# dataset_val = tf.data.Dataset.zip((parsed_ds_input_val, parsed_ds_output_val))
-
-# Datasets size check ---------------------------------------------------------
-#itr = iter(dataset_train)
-#j = 0
-#for i in range(n_samp_train):
-#    example = next(itr)
-#    j += 1
-#
-#try:
-#    example = next(itr)
-#except StopIteration:
-#    print(f'Train set over: {j}')
-#
-#itr1 = iter(dataset_val)
-#jj = 0
-#for i in range(n_samp_valid):
-#    example1 = next(itr1)
-##    if np.any(np.isnan(example1[0].numpy())):
-##         sys.exit(1)
-##     elif np.any(np.isnan(example1[1][0].numpy())):
-##         sys.exit(2)
-##     elif np.any(np.isnan(example1[1][1].numpy())):
-##         sys.exit(3)
-##     elif np.any(np.isnan(example1[1][2].numpy())):
-##         sys.exit(4)
-#
-#    jj += 1
-#
-#try:
-#    example1 = next(itr1)
-#except StopIteration:
-#    print(f'Valid set over: {jj}')
-#print(NAME)
-#sys.exit(0)
 
 # Dataset shuffling -----------------------------------------------------------
 
@@ -631,14 +547,10 @@ if Ret == str(180):
     n_prefetch = 1
 
 dataset_train = dataset_train.shuffle(shuffle_buffer)
-# dataset_train = dataset_train.filter(interval_filter_fn)
 dataset_train = dataset_train.repeat(epochs)
 dataset_train = dataset_train.batch(batch_size=batch_size)
 dataset_train = dataset_train.prefetch(n_prefetch)
 
-#dataset_val = dataset_val.shuffle(shuffle_buffer)
-# dataset_val = dataset_val.filter(interval_filter_fn)
-#dataset_val = dataset_val.cache()
 dataset_val = dataset_val.repeat(epochs)
 dataset_val = dataset_val.batch(batch_size=batch_size)
 dataset_val = dataset_val.prefetch(n_prefetch)
@@ -744,4 +656,3 @@ vLoss = train_history.history['val_loss']
 tTrain = time_callback.times
 
 np.savez(epoch_path+NAME+'_log', tLoss=tLoss, vLoss=vLoss, tTrain=tTrain)
-
