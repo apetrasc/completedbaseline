@@ -206,7 +206,7 @@ def parser(rec):
             return inputs, (output1, output2, output3)
 
 #%% Functions for the NN
-'''
+
 def cnn_model():
     input_data = layers.Input(shape=input_shape, name='input_data')
     ini = 30
@@ -440,7 +440,7 @@ def cnn_model():
     
     CNN_model = tf.keras.models.Model(inputs=input_data, outputs=outputs_model)
     return CNN_model, losses
-'''
+
     
 def step_decay(epoch):
    epochs_drop = lr_epdrop

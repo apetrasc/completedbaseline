@@ -1,13 +1,33 @@
-import torch
 import tensorflow as tf
 from tensorflow.keras import layers
 import sys
 import os
+
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
+
 import config_deep as config
 app = config.NN_WallRecon
+
+nx = 432
+nz = 432 
+
+@tf.function
+def configure_padding():
+    if app.NET_MODEL == 1:
+        # 'same' または 'valid' に設定
+        padding = 'same'
+        pad_out = 2
+        padding_in = 64
+        padding_out = 0
+    else:
+        raise ValueError('NET_MODEL = 1 is the only one implemented so far')
+    
+    return padding
+
+padding = configure_padding()
 input_shape = (app.N_VARS_IN, nz, nx)
+
 
 def cnn_model():
     input_data = layers.Input(shape=input_shape, name='input_data')
