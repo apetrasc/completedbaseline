@@ -6,7 +6,6 @@ Created on Mon Nov 1 12:14:06 2024
 @author: sadanori
 """
 import os
-# import scipy.io as sio
 import numpy as np
 import math
 import time
@@ -20,7 +19,7 @@ from tensorflow.keras.utils import get_custom_objects
 from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, \
                                        ModelCheckpoint, LearningRateScheduler
 from src.utils import periodic_padding,periodic_padding_z,parser,thres_relu,step_decay
-from src.tf_utils import SubTensorBoard
+from src.tf_utils import SubTensorBoard, TimeHistory
 os.environ["MODEL_CNN"] = "NN_WallRecon";
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE";
 #%% Configuration import
@@ -83,9 +82,9 @@ if physical_devices:
     print(e)
 
 on_GPU = app.ON_GPU
-n_gpus = app.N_GPU
+number_gpus = app.N_GPU
 
-distributed_training = on_GPU == True and n_gpus>1
+distributed_training = on_GPU == True and number_gpus>1
 
 if distributed_training:
     strategy = tf.distribute.MirroredStrategy(cross_device_ops=tf.distribute.ReductionToOneDevice())
@@ -94,7 +93,16 @@ if distributed_training:
     print('WARNING: The provided batch size is used in each device of the distributed training')
     batch_size *= strategy.num_replicas_in_sync
 validation_split = app.VAL_SPLIT
+#%% Reading configuration
 
+if app.NET_MODEL == 1:
+    pad = tf.constant(64)
+    pad_out = 2
+    padding_in = 64
+    padding_out = 0
+else:
+    pad = tf.constant(0)
+    raise ValueError('NET_MODEL = 1 is the only one implentated so far')
 #%% Functions for the NN
 
 def cnn_model():
@@ -330,33 +338,7 @@ def cnn_model():
     
     CNN_model = tf.keras.models.Model(inputs=input_data, outputs=outputs_model)
     return CNN_model, losses
-
-
-# Credit to Marcin Możejko for the Callback definition
-class TimeHistory(tf.keras.callbacks.Callback):
-    def on_train_begin(self, logs={}):
-        self.times = []
-
-    def on_epoch_begin(self, epoch, logs={}):
-        self.epoch_time_start = time.time()
-
-    def on_epoch_end(self, epoch, logs={}):
-        self.times.append(time.time() - self.epoch_time_start)
-        
-#%% Reading configuration
-
-if app.NET_MODEL == 1:
-    pad = tf.constant(64)
-    pad_out = 2
-    padding_in = 64
-    padding_out = 0
-else:
-    pad = tf.constant(0)
-    raise ValueError('NET_MODEL = 1 is the only one implentated so far')
-
-# in_vars = ''
-# for i in range(app.N_VARS_IN):
-#     in_vars = in_vars + app.VARS_NAME_IN[i]
+      
 
 tstamp = int(time.time())
 

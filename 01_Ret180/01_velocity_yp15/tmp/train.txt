@@ -317,3 +317,11 @@ Non-trainable params: 3480 (13.59 KB)
 __________________________________________________________________________________________________
 None
 Epoch 1/5
+
+Epoch 1: val_output_b1_loss improved from inf to 0.00426, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727185055/model.ckpt.0001.hdf5
+1339/1339 - 555s - loss: 0.0076 - output_b1_loss: 0.0055 - output_b2_loss: 5.6747e-04 - output_b3_loss: 0.0015 - val_loss: 0.0051 - val_output_b1_loss: 0.0043 - val_output_b2_loss: 6.7879e-05 - val_output_b3_loss: 7.9274e-04 - learning_rate: 3.6736e-04 - lr: 0.0010 - 555s/epoch - 415ms/step
+Epoch 2/5
+
+Epoch 2: val_output_b1_loss improved from 0.00426 to 0.00404, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727185055/model.ckpt.0002.hdf5
+1339/1339 - 474s - loss: 0.0044 - output_b1_loss: 0.0036 - output_b2_loss: 8.8314e-05 - output_b3_loss: 7.8786e-04 - val_loss: 0.0049 - val_output_b1_loss: 0.0040 - val_output_b2_loss: 9.2860e-05 - val_output_b3_loss: 7.8736e-04 - learning_rate: 2.6240e-04 - lr: 0.0010 - 474s/epoch - 354ms/step
+Epoch 3/5

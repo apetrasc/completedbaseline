@@ -24,3 +24,5 @@ I0000 00:00:1727182694.442132  141558 device_compiler.h:186] Compiled cluster us
   saving_api.save_model(
 2024-09-24 15:29:54.737606: W tensorflow/core/kernels/data/prefetch_autotuner.cc:52] Prefetch autotuner tried to allocate 83066880 bytes after encountering the first element of size 83066880 bytes.This already causes the autotune ram budget to be exceeded. To stay within the ram budget, either increase the ram budget or reduce element size
 2024-09-24 15:29:54.738212: W tensorflow/core/kernels/data/prefetch_autotuner.cc:52] Prefetch autotuner tried to allocate 83066880 bytes after encountering the first element of size 20766720 bytes.This already causes the autotune ram budget to be exceeded. To stay within the ram budget, either increase the ram budget or reduce element size
+/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/train.py:737: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.
+  tf.keras.models.save_model(
