@@ -24,6 +24,7 @@ os.environ["MODEL_CNN"] = "NN_WallRecon";
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE";
 #%% Configuration import
 import config_deep as config
+from vit_keras import vit, utils
 
 prb_def = os.environ.get('MODEL_CNN', None)
 
