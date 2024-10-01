@@ -1,0 +1,14 @@
+This job can be monitored from: https://grafana.c3se.chalmers.se/d/gpu-job/gpu-job?var-jobid=2891274&from=1727777621000
+2024-10-01 12:13:43.731497: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-10-01 12:13:43.926019: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-01 12:13:43.926057: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-01 12:13:43.968214: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+Traceback (most recent call last):
+  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/sandbox/ViT_tf.py", line 13, in <module>
+    from src.vit import vit_b16 
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/src/vit.py", line 6, in <module>
+    from . import layers, utils
+  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/src/utils.py", line 353, in <module>
+    import validators
+ModuleNotFoundError: No module named 'validators'

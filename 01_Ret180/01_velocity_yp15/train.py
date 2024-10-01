@@ -20,6 +20,7 @@ from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, \
                                        ModelCheckpoint, LearningRateScheduler
 from src.utils import periodic_padding,periodic_padding_z,parser,thres_relu,step_decay
 from src.tf_utils import SubTensorBoard, TimeHistory
+from src.utils import 
 os.environ["MODEL_CNN"] = "NN_WallRecon";
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE";
 #%% Configuration import
