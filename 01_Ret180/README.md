@@ -20,7 +20,8 @@ shows the job progress
 lsr
 
 show the training situation -> look at the train.txt
-
+## note
+pytorch is not available. Learn how to use Tensorflow.
 how can we evaluate the model? -> CNN-predict-i.py?
 submit.sh is not the suitable word for it: I think training.sh and eval.sh should be prepared so that anyone can work and measure the efficiency of the model. 
 ```
@@ -44,6 +45,8 @@ you can search the module name by
 ```
 ```
 scontrol is 
+see here if you want to make a new virtual environment https://www.c3se.chalmers.se/documentation/applications/python/#virtual-environments
+
 #warning!
 Please ignore 
 # ml models

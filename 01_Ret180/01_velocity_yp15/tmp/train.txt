@@ -1,0 +1,49 @@
+Newtonian Wall-Recon is used
+Using TensorFlow version: 2.15.1 , GPU: 4
+Physical devices cannot be modified after being initialized
+Number of devices for distributed training: 4
+WARNING: The provided batch size is used in each device of the distributed training
+n_files_train:6
+n_files_validation:2
+n_samp_train:21424
+n_samp_validation:6420
+tfr train:
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file000samples2000_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file000samples2000_002-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file001samples2000_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file001samples2000_002-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file002samples2000_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file002samples2000_002-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file003samples2000_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file003samples2000_002-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file004samples2000_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file004samples2000_002-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file005samples715_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Train/.tfrecords_singlefile_train_dt1157_f32/Ret180_1728x576x864_train_dt1157_velocityn25_yp001-yp015_file005samples715_002-of-002.tfrecords
+tfr valid:
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Validation/.tfrecords_singlefile_validation_dt1157_f32/Ret180_1728x576x864_validation_dt1157_velocityn25_yp001-yp015_file000samples2000_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Validation/.tfrecords_singlefile_validation_dt1157_f32/Ret180_1728x576x864_validation_dt1157_velocityn25_yp001-yp015_file000samples2000_002-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Validation/.tfrecords_singlefile_validation_dt1157_f32/Ret180_1728x576x864_validation_dt1157_velocityn25_yp001-yp015_file001samples1210_001-of-002.tfrecords
+/mimer/NOBACKUP/groups/kthmech/argb/02_VE/n25/99_dataset/Validation/.tfrecords_singlefile_validation_dt1157_f32/Ret180_1728x576x864_validation_dt1157_velocityn25_yp001-yp015_file001samples1210_002-of-002.tfrecords
+180 576
+
+# ====================================================================
+#     Summary of the options for the model                            
+# ====================================================================
+
+Model name: NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727971402
+Number of samples for training: 21424
+Number of samples for validation: 6420
+Total number of samples: 27844
+Batch size: 16
+
+Data augmentation: False (not implemented in this model)
+Initial distribution of parameters: random
+
+
+Prediction of fluctuation only: True
+y- and z-output scaling with the ratio of RMS values : False
+Normalized input: True
+
+# ====================================================================
+Compiling and training the model for multiple GPU
