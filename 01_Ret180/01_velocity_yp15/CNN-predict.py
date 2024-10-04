@@ -821,7 +821,6 @@ if distributed_training:
 
 else:
     CNN_model = init_model
-
     CNN_model.compile(loss='mse',
                      optimizer=tf.keras.optimizers.Adam(lr=init_lr))
 

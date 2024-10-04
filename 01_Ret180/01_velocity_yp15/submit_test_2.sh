@@ -23,4 +23,4 @@ module load TensorFlow/2.5.0-fosscuda-2020b
 
 # Run the executable named myexe 
 # and write the output into my_output_file
-python3 CNN-predict_2.py > predict_2.txt
+python3 CNN-predict_2.py > tmp/predict_2.txt

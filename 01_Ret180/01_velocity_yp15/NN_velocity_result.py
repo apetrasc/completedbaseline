@@ -12,6 +12,7 @@ import matplotlib.colors as colors
 import sys
 from matplotlib.legend_handler import HandlerLine2D, HandlerTuple
 from matplotlib.lines import Line2D
+import config_deep as config
 
 cwd = os.getcwd()
 batchn = cwd.split('/')[-2].replace("batch","")[:2]
@@ -19,7 +20,6 @@ casen = cwd.split('/')[-1].replace("case","")[:2]
 
 os.makedirs(cwd+'/.jupyter_plots', exist_ok=True)
 
-import config_deep as config
 
 app = config.NN_WallRecon
 

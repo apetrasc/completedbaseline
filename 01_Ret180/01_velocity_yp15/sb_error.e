@@ -74,7 +74,3 @@ The following have been reloaded with a version change:
  32) pybind11/2.11.1-GCCcore-12.3.0 => pybind11/2.9.2-GCCcore-11.3.0
  33) zlib/1.2.13-GCCcore-12.3.0 => zlib/1.2.12-GCCcore-11.3.0
 
-/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/NN_velocity_result.py:257: RuntimeWarning: divide by zero encountered in true_divide
-  lambda_z = 2*math.pi/kz
-/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/NN_velocity_result.py:258: RuntimeWarning: divide by zero encountered in true_divide
-  lambda_x = 2*math.pi/kx

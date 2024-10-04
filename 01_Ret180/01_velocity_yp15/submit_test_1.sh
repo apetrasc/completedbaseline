@@ -23,4 +23,4 @@ module load TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1
 
 # Run the executable named myexe 
 # and write the output into my_output_file
-python3 CNN-predict_1.py > predict_1.txt
+python3 CNN-predict_1.py > tmp/predict_1.txt

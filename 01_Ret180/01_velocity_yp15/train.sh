@@ -24,4 +24,4 @@ source sadanori/bin/activate
 
 # Run the executable named myexe 
 # and write the output into my_output_file
-python3 train.py > tmp/train.txt
+python3 train.py > train/train.txt
