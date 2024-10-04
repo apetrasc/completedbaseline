@@ -30,7 +30,7 @@ tfr valid:
 #     Summary of the options for the model                            
 # ====================================================================
 
-Model name: NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1728038573
+Model name: NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1728041467
 Number of samples for training: 21424
 Number of samples for validation: 6420
 Total number of samples: 27844

@@ -10,9 +10,9 @@ from tensorflow.keras.datasets import cifar10
 # from ../src.utils import 
 import sys
 sys.path.append('/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15')
-from src.vit import vit_b16 
-import tensorflow_addons as tfa
-
+#from src.vit import vit_b16 
+#import tensorflow_addons as tfa
+from vit_keras import vit, utils
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 

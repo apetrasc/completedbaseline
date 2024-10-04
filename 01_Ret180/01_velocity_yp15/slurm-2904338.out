@@ -1,8 +1,0 @@
-This job can be monitored from: https://grafana.c3se.chalmers.se/d/gpu-job/gpu-job?var-jobid=2904338&from=1728034391000
-Traceback (most recent call last):
-  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/train.py", line 14, in <module>
-    from models.CNN import cnn_model
-  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/models/CNN.py", line 194
-    act_b1 = layers.Activation(tf.keras.activations.relu(lambda x: threshold=app.RELU_THRESHOLD))(cnv_b1)
-                                                         ^^^^^^^^^^^^^^^^^^^^
-SyntaxError: expression cannot contain assignment, perhaps you meant "=="?
