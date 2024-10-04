@@ -18,7 +18,7 @@ import tensorflow.keras.backend as K
 from tensorflow.keras.utils import get_custom_objects
 from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, \
                                        ModelCheckpoint, LearningRateScheduler
-from src.utils import periodic_padding,periodic_padding_z,parser,thres_relu,step_decay
+from src.utils import periodic_padding,periodic_padding_z,parser,step_decay
 from src.tf_utils import SubTensorBoard, TimeHistory
 #from src.utils import 
 os.environ["MODEL_CNN"] = "NN_WallRecon";
