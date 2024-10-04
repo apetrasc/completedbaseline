@@ -1,6 +1,5 @@
 Newtonian Wall-Recon is used
 Using TensorFlow version: 2.15.1 , GPU: 4
-Physical devices cannot be modified after being initialized
 Number of devices for distributed training: 4
 WARNING: The provided batch size is used in each device of the distributed training
 n_files_train:6
@@ -31,7 +30,7 @@ tfr valid:
 #     Summary of the options for the model                            
 # ====================================================================
 
-Model name: NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648
+Model name: NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1728036115
 Number of samples for training: 21424
 Number of samples for validation: 6420
 Total number of samples: 27844
@@ -318,22 +317,10 @@ ________________________________________________________________________________
 None
 Epoch 1/5
 
-Epoch 1: val_output_b1_loss improved from inf to 0.02346, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0001.hdf5
-1339/1339 - 556s - loss: 0.0088 - output_b1_loss: 0.0068 - output_b2_loss: 8.1286e-04 - output_b3_loss: 0.0012 - val_loss: 0.0374 - val_output_b1_loss: 0.0235 - val_output_b2_loss: 0.0067 - val_output_b3_loss: 0.0073 - learning_rate: 3.6736e-04 - lr: 0.0010 - 556s/epoch - 416ms/step
+Epoch 1: val_output_b1_loss improved from inf to 0.04549, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1728036115/model.ckpt.0001.hdf5
+1339/1339 - 558s - loss: 0.0094 - output_b1_loss: 0.0069 - output_b2_loss: 0.0013 - output_b3_loss: 0.0012 - val_loss: 0.0468 - val_output_b1_loss: 0.0455 - val_output_b2_loss: 2.8918e-04 - val_output_b3_loss: 0.0010 - learning_rate: 3.6736e-04 - lr: 0.0010 - 558s/epoch - 417ms/step
 Epoch 2/5
 
-Epoch 2: val_output_b1_loss improved from 0.02346 to 0.00476, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0002.hdf5
-1339/1339 - 473s - loss: 0.0052 - output_b1_loss: 0.0043 - output_b2_loss: 1.1443e-04 - output_b3_loss: 8.2836e-04 - val_loss: 0.0056 - val_output_b1_loss: 0.00
-Epoch 3: val_output_b1_loss did not improve from 0.00794
-1339/1339 - 473s - loss: 0.0040 - output_b1_loss: 0.0033 - output_b2_loss: 9.0286e-05 - 
-Epoch 3: val_output_b1_loss improved from 0.00476 to 0.00447, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0003.hdf5
-1339/1339 
-Epoch 4: val_output_b1_loss improved from 0.00794 to 0.00280, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay2
-Epoch 4: val_output_b1_loss improved from 0.02644 to 0.00962, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr
-Epoch 4: val_output_b1_loss improved from 0.00447 to 0.00329, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0004.hdf5
-1339/1339 
-Epoch 5: val_output_b1_loss did not improve from 0.00280
-1339/1339 - 472s - loss: 0.0043 - output_b1_loss: 0.0035 - output_b2_loss: 7.8643e-05 - outp
-Epoch 5: val_output_b1_loss improved from 0.00962 to 0.00493, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.00
-Epoch 5: val_output_b1_loss improved from 0.00329 to 0.00244, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1727182648/model.ckpt.0005.hdf5
-1339/1339 - 473s - loss: 0.0029 - output_b1_loss: 0.0022 - output_b2_loss: 6.5125e-05 - output_b3_loss: 6.4897e-04 - val_loss: 0.0034 - val_output_b1_loss: 0.0024 - val_output_b2_loss: 1.0182e-04 - val_output_b3_loss: 9.0222e-04 - learning_rate: 1.2987e-04 - lr: 0.0010 - 473s/epoch - 353ms/step
+Epoch 2: val_output_b1_loss improved from 0.04549 to 0.00564, saving model to .logs/NN_WallReconfluct1TF2_3NormIn-3Out_1-15_432x432_Ret180_lr0.001_decay20drop0.5_relu-1728036115/model.ckpt.0002.hdf5
+1339/1339 - 474s - loss: 0.0078 - output_b1_loss: 0.0067 - output_b2_loss: 1.5940e-04 - output_b3_loss: 9.1533e-04 - val_loss: 0.0066 - val_output_b1_loss: 0.0056 - val_output_b2_loss: 7.6319e-05 - val_output_b3_loss: 8.3887e-04 - learning_rate: 2.6240e-04 - lr: 0.0010 - 474s/epoch - 354ms/step
+Epoch 3/5

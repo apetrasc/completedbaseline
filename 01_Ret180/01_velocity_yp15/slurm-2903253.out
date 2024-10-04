@@ -1,5 +1,0 @@
-This job can be monitored from: https://grafana.c3se.chalmers.se/d/gpu-job/gpu-job?var-jobid=2903253&from=1727970822000
-  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/train.py", line 23
-    from src.utils import 
-                          ^
-SyntaxError: invalid syntax

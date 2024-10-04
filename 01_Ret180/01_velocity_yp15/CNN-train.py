@@ -369,7 +369,7 @@ def cnn_model():
     cnv_b1 = layers.Conv2D(1, (3, 3), padding=padding,
                                 data_format='channels_first')(act_30)
     if pred_fluct == True:
-        act_b1 = layers.Lambda(lambda x: thres_relu(x))(cnv_b1)
+        act_b1 = layers.Lambda(lambda x: thres_relu(x,app))(cnv_b1)
         output_b1 = layers.Cropping2D(cropping=((int(pad_out/2), int(pad_out/2)),
                                                 (int(pad_out/2), int(pad_out/2))),
                                       data_format='channels_first',name='output_b1')(act_b1)
@@ -386,7 +386,7 @@ def cnn_model():
         cnv_b2 = layers.Conv2D(1, (3, 3), padding=padding,
                                 data_format='channels_first')(act_5)
         if pred_fluct == True:
-            act_b2 = layers.Lambda(lambda x: thres_relu(x))(cnv_b2)
+            act_b2 = layers.Lambda(lambda x: thres_relu(x,app))(cnv_b2)
             output_b2 = layers.Cropping2D(cropping=((int(pad_out/2), int(pad_out/2)),
                                                 (int(pad_out/2), int(pad_out/2))),
                                       data_format='channels_first',name='output_b2')(act_b2)
@@ -405,7 +405,7 @@ def cnn_model():
         cnv_b2 = layers.Conv2D(1, (3, 3), padding=padding,
                                 data_format='channels_first')(act_30)
         if pred_fluct == True:
-            act_b2 = layers.Lambda(lambda x: thres_relu(x))(cnv_b2)
+            act_b2 = layers.Lambda(lambda x: thres_relu(x,app))(cnv_b2)
             output_b2 = layers.Cropping2D(cropping=((int(pad_out/2), int(pad_out/2)),
                                                 (int(pad_out/2), int(pad_out/2))),
                                       data_format='channels_first',name='output_b2')(act_b2)
@@ -421,7 +421,7 @@ def cnn_model():
         cnv_b3 = layers.Conv2D(1, (3, 3), padding=padding,
                                 data_format='channels_first')(act_30)
         if pred_fluct == True:
-            act_b3 = layers.Lambda(lambda x: thres_relu(x))(cnv_b3)
+            act_b3 = layers.Lambda(lambda x: thres_relu(x,app))(cnv_b3)
             output_b3 = layers.Cropping2D(cropping=((int(pad_out/2), int(pad_out/2)),
                                                 (int(pad_out/2), int(pad_out/2))),
                                       data_format='channels_first',name='output_b3')(act_b3)
@@ -451,7 +451,7 @@ def step_decay(epoch):
    return lrate
 
 # Final ReLu function for fluctuations
-def thres_relu(x):
+def thres_relu(x,app):
    return tf.keras.activations.relu(x, threshold=app.RELU_THRESHOLD)
 
 #get_custom_objects().update({'thres_relu': layers.Activation(thres_relu)})

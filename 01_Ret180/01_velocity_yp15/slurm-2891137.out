@@ -1,5 +1,0 @@
-This job can be monitored from: https://grafana.c3se.chalmers.se/d/gpu-job/gpu-job?var-jobid=2891137&from=1727777423000
-  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/sandbox/ViT_tf.py", line 10
-    from ../src.utils import 
-           ^
-SyntaxError: invalid syntax

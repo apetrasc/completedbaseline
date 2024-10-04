@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import time
 import tensorflow.keras.backend as K
 from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, \
                                        ModelCheckpoint, LearningRateScheduler
