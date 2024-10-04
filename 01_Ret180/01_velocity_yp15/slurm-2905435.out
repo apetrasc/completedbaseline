@@ -1,0 +1,63 @@
+This job can be monitored from: https://grafana.c3se.chalmers.se/d/gpu-job/gpu-job?var-jobid=2905435&from=1728056936000
+2024-10-04 17:49:02.128774: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-10-04 17:49:02.475020: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-04 17:49:02.475051: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-04 17:49:02.558170: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-10-04 17:49:18.196869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38553 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-40GB, pci bus id: 0000:ca:00.0, compute capability: 8.0
+Traceback (most recent call last):
+  File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/CNN-predict_1.py", line 466, in <module>
+    X_test = tfr_files_output_test_ds.map(input_parser, num_parallel_calls=tf.data.experimental.AUTOTUNE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 2280, in map
+    return map_op._map_v2(
+           ^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/data/ops/map_op.py", line 40, in _map_v2
+    return _ParallelMapDataset(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/data/ops/map_op.py", line 148, in __init__
+    self._map_func = structured_function.StructuredFunctionWrapper(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/data/ops/structured_function.py", line 265, in __init__
+    self._function = fn_factory()
+                     ^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1227, in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1197, in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 695, in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py", line 178, in trace_function
+    concrete_function = _maybe_define_function(
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py", line 283, in _maybe_define_function
+    concrete_function = _create_concrete_function(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py", line 310, in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/framework/func_graph.py", line 1059, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 598, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/data/ops/structured_function.py", line 231, in wrapped_fn
+    ret = wrapper_helper(*args)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/data/ops/structured_function.py", line 161, in wrapper_helper
+    ret = autograph.tf_convert(self._func, ag_ctx)(*nested_args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/apps/Arch/software/TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1/lib/python3.11/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/local/tmp.2905435/__autograph_generated_filetfz06prx.py", line 22, in tf__input_parser
+    padding = ag__.converted_call(ag__.ld(tf).cast, (ag__.ld(pad) / 2, ag__.ld(tf).int32), None, fscope)
+                                                             ^^^
+NameError: in user code:
+
+    File "/mimer/NOBACKUP/groups/kthmech/sadanori/01_Ret180/01_velocity_yp15/src/utils.py", line 251, in input_parser  *
+        padding = tf.cast(pad/2, tf.int32)
+
+    NameError: name 'pad' is not defined
+

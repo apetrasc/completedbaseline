@@ -1,0 +1,27 @@
+Batch = 01
+Case = 01
+Train_yp = 1
+Target_yp = 15
+Train variables = ('v', 'u', 'p')
+Target variables = ('v', 'w', 'u')
+No. of train variables = 3
+No. of target variables = 3
+The MSE value v is: 9.623485e-04
+0.03663281466007685
+The MSE value w is: 2.083768e-05
+0.24036077787048693
+The MSE value u is: 1.863484e-04
+0.2089024625825662
+Mean of v. RMS error: 1.82 %  RMS dat error: 2.70 % RMS mean dat error: 4.17 %
+Mean of w. RMS error: 11.17 %  RMS dat error: 16.40 % RMS mean dat error: 8.05 %
+Mean of u. RMS error: 2.78 %  RMS dat error: 11.71 % RMS mean dat error: 1.35 %
+RMSE: [2.7345464076896517]
+RMSE: [2.7345464076896517, 15.59024059692528]
+RMSE: [2.7345464076896517, 15.59024059692528, 10.806615955207295]
+RMSEE: [2.7106296660997415]
+RMSEE: [2.7106296660997415, 17.196091392777262]
+RMSEE: [2.7106296660997415, 17.196091392777262, 14.038381584817733]
+[0.9956193912697318, 0.9042081494617875, 0.9328422011139711]
+0 [844 846 842]
+1 [1968 1965 1969]
+2 [1959 1961 1958]

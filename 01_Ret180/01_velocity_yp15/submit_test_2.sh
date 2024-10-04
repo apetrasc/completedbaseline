@@ -17,7 +17,7 @@
 # SBATCH --ntasks-per-node=4
 
 module load TensorFlow/2.5.0-fosscuda-2020b
-
+source sadanori/bin/activate
 #SBATCH -e sb_error.e
 #SBATCH -o sb_output.o
 

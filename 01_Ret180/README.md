@@ -58,3 +58,9 @@ Please ignore
 *.zip
 *.tar.gz
 
+# explanations of functions
+This is a parser function. It defines the template for
+    interpreting the examples you're feeding in. Basically, 
+    this function defines what the labels and data look like
+    for your labeled data. 
+    

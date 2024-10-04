@@ -12,6 +12,8 @@ import math
 import time
 import re
 import sys
+from src.utils import input_parser, output_parser
+#from src.tf_utils import 
 os.environ["MODEL_CNN"] = "NN_WallRecon";
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE";
 #%% Configuration import
@@ -35,8 +37,8 @@ from tensorflow.keras import layers
 
 #device_name = tf.test.gpu_device_name()
 physical_devices = tf.config.list_physical_devices('GPU')
-availale_GPUs = len(physical_devices) 
-print('Using TensorFlow version:', tf.__version__, ', GPU:', availale_GPUs)
+available_GPUs = len(physical_devices) 
+print('Using TensorFlow version:', tf.__version__, ', GPU:', available_GPUs)
 print(tf.keras.__version__)
 
 if physical_devices:
@@ -56,7 +58,7 @@ if distributed_training:
     print('Number of devices for distributed training: {}'.format(strategy.num_replicas_in_sync))
 
 #%% Function definition
-
+'''
 @tf.function
 def periodic_padding(tensor, padding):
     """
@@ -112,12 +114,6 @@ def periodic_padding_z(tensor, padding):
 
 @tf.function
 def output_parser(rec):
-    '''
-    This is a parser function. It defines the template for
-    interpreting the examples you're feeding in. Basically, 
-    this function defines what the labels and data look like
-    for your labeled data. 
-    '''        
     features = {
         'i_sample': tf.io.FixedLenFeature([], tf.int64),
         'nx': tf.io.FixedLenFeature([], tf.int64),
@@ -157,12 +153,7 @@ def output_parser(rec):
 
 @tf.function
 def input_parser(rec):
-    '''
-    This is a parser function. It defines the template for
-    interpreting the examples you're feeding in. Basically, 
-    this function defines what the labels and data look like
-    for your labeled data. 
-    '''        
+    
     features = {
         'i_sample': tf.io.FixedLenFeature([], tf.int64),
         'nx': tf.io.FixedLenFeature([], tf.int64),
@@ -199,7 +190,7 @@ def input_parser(rec):
         inputs = tf.concat((inputs, tf.reshape(periodic_padding(new_input,((padding,padding),(padding,padding))),(1,nzd,nxd))),0)
         
     return inputs
-
+'''
 @tf.function
 def eval_parser(rec):
     '''

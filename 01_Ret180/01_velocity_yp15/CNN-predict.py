@@ -26,8 +26,9 @@ else:
     raise ValueError('"MODEL_CNN" enviroment variable must be defined as "NN_WallRecon". Otherwise, use different train script.')
 
 os.environ["CUDA_VISIBLE_DEVICES"]=str(app.WHICH_GPU_TEST);
-
-
+from src.utils import input_parser, output_parser
+from src.utils import periodic_padding,periodic_padding_z,parser,step_decay
+from src.tf_utils import SubTensorBoard, TimeHistory
 #%% Tensorflow imports
 
 import tensorflow as tf
@@ -35,8 +36,8 @@ from tensorflow.keras import layers
 
 #device_name = tf.test.gpu_device_name()
 physical_devices = tf.config.list_physical_devices('GPU')
-availale_GPUs = len(physical_devices) 
-print('Using TensorFlow version:', tf.__version__, ', GPU:', availale_GPUs)
+available_GPUs = len(physical_devices) 
+print('Using TensorFlow version:', tf.__version__, ', GPU:', available_GPUs)
 print(tf.keras.__version__)
 
 if physical_devices:
