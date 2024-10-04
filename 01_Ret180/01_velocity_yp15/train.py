@@ -293,7 +293,7 @@ print('# ====================================================================')
 
 #%% Keras model
 
-padding = 'valid'
+#padding = 'valid'
 
 if distributed_training:
    print('Compiling and training the model for multiple GPU')

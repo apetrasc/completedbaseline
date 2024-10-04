@@ -25,7 +25,7 @@ def configure_padding():
     
     return padding
 
-padding = 'same'
+padding = 'valid'
 pad_out = 2
 padding_in = 64
 padding_out = 0
