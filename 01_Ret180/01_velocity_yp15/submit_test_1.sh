@@ -18,8 +18,8 @@
 #module load TensorFlow/2.5.0-fosscuda-2020b
 module load TensorFlow/2.15.1-foss-2023a-CUDA-12.1.1
 source sadanori/bin/activate
-#SBATCH -e sb_error.e
-#SBATCH -o sb_output.o
+#SBATCH -e tmp/sb_error.e
+#SBATCH -o tmp/sb_output.o
 
 # Run the executable named myexe 
 # and write the output into my_output_file
